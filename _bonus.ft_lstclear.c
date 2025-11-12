@@ -6,11 +6,10 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 12:35:22 by nhoussie          #+#    #+#             */
-/*   Updated: 2025/11/10 17:19:45 by nhoussie         ###   ########.fr       */
+/*   Updated: 2025/11/12 14:24:04 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 /**

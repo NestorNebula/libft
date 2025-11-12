@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:40:18 by nhoussie          #+#    #+#             */
-/*   Updated: 2025/11/09 10:01:11 by nhoussie         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:42:12 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t siz)
 	size_t	i;
 	size_t	j;
 
+	if (siz == 0)
+		return (ft_strlen(src));
 	j = 0;
 	while (dst[j] != '\0')
 		j++;

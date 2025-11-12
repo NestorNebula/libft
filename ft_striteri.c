@@ -6,9 +6,11 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 13:44:45 by nhoussie          #+#    #+#             */
-/*   Updated: 2025/11/08 13:51:32 by nhoussie         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:08:16 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 /**
  *  Applies the function 'f' to each character of the string passed as argument,
@@ -23,6 +25,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	i;
 
+	if (s == NULL)
+		return ;
 	i = 0;
 	while (s[i] != '\0')
 	{

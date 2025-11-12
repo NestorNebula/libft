@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 10:06:29 by nhoussie          #+#    #+#             */
-/*   Updated: 2025/11/10 09:32:34 by nhoussie         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:08:04 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ char	**ft_split(char const *s, char c)
 	char	**split;
 	int		strs_count;
 
+	if (s == NULL)
+		return (NULL);
 	strs_count = handle_strs(s, c, NULL);
 	split = malloc(sizeof(char *) * (strs_count + 1));
 	if (split == NULL)
 		return (NULL);
 	if (handle_strs(s, c, split) == -1)
-	{
-		free(split);
 		return (NULL);
-	}
+	split[strs_count] = NULL;
 	return (split);
 }
 
@@ -75,7 +75,6 @@ static int	handle_strs(const char *s, char c, char **split)
 					free_strs(split, count);
 					return (-1);
 				}
-				split[count + 1] = NULL;
 			}
 			count++;
 		}	

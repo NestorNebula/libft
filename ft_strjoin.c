@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 08:45:55 by nhoussie          #+#    #+#             */
-/*   Updated: 2025/11/08 08:55:04 by nhoussie         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:07:42 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*join;
 	size_t	size;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
 	join = malloc(sizeof(char) * size);
 	if (join == NULL)

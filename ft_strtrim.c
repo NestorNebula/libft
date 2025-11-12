@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 09:05:50 by nhoussie          #+#    #+#             */
-/*   Updated: 2025/11/08 09:49:06 by nhoussie         ###   ########.fr       */
+/*   Updated: 2025/11/12 15:41:12 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,21 @@ char	*ft_strtrim(char const *s1, char const *set)
 	const char	*start;
 	const char	*end;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	start = s1;
 	while (*start != '\0' && ft_strchr(set, *start) != NULL)
 		start++;
 	end = s1 + ft_strlen(s1) - 1;
 	while (start < end && ft_strchr(set, *end) != NULL)
 		end--;
-	if (end < start)
-		end = start;
+	if (start[0] == '\0' && start >= end)
+	{
+		trimmed = malloc(1);
+		if (trimmed != NULL)
+			trimmed[0] = '\0';
+		return (trimmed);
+	}
 	trimmed = malloc(sizeof(char) * (end - start + 2));
 	if (trimmed == NULL)
 		return (NULL);

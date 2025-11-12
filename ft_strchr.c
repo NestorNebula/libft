@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 09:59:28 by nhoussie          #+#    #+#             */
-/*   Updated: 2025/11/07 10:02:55 by nhoussie         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:50:33 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
+		if (s[i] == (char) c)
 			return ((char *) s + i);
 		i++;
 	}
