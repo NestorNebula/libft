@@ -46,5 +46,5 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(BONUS_OBJ)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJ) $^
+bonus: $(OBJ) $(BONUS_OBJ)
+	$(AR) $(ARFLAGS) $(NAME) $^
