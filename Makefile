@@ -20,13 +20,13 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 
 OBJ = $(SRC:.c=.o)
 
-BONUS_PREFIX = _bonus.
+BONUS_SUFFIX = _bonus
 
-BONUS_SRC = $(BONUS_PREFIX)ft_lstnew.c $(BONUS_PREFIX)ft_lstadd_front.c \
-			$(BONUS_PREFIX)ft_lstsize.c $(BONUS_PREFIX)ft_lstlast.c \
-			$(BONUS_PREFIX)ft_lstadd_back.c $(BONUS_PREFIX)ft_lstdelone.c \
-			$(BONUS_PREFIX)ft_lstclear.c $(BONUS_PREFIX)ft_lstiter.c \
-			$(BONUS_PREFIX)ft_lstmap.c
+BONUS_SRC = ft_lstnew$(BONUS_SUFFIX).c ft_lstadd_front$(BONUS_SUFFIX).c \
+			ft_lstsize$(BONUS_SUFFIX).c ft_lstlast$(BONUS_SUFFIX).c \
+			ft_lstadd_back$(BONUS_SUFFIX).c ft_lstdelone$(BONUS_SUFFIX).c \
+			ft_lstclear$(BONUS_SUFFIX).c ft_lstiter$(BONUS_SUFFIX).c \
+			ft_lstmap$(BONUS_SUFFIX).c
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
