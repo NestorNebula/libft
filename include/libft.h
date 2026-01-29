@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:28:40 by nhoussie          #+#    #+#             */
-/*   Updated: 2025/11/10 11:53:08 by nhoussie         ###   ########.fr       */
+/*   Updated: 2025/11/25 09:30:21 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,12 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+char	*ft_itoa_base(int n, const char *base);
+char	*ft_uitoa_base(unsigned int n, const char *base);
+char	*ft_pitoa_base(void *p, const char *base);
+
+int		ft_printf(const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
 
 #endif /* end of include guard: LIBFT_H */
