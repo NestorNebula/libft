@@ -15,6 +15,7 @@
   - [Installation](#installation)
   - [Tests](#tests)
 - [Usage](#usage)
+  - [Updates](#updates)
   - [Disclaimer](#disclaimer)
 - [License](#license)
 - [Contact](#contact)
@@ -88,6 +89,12 @@ To execute them, you will need the [Criterion Testing Framework](https://github.
 ## Usage
 
 Once built, the library can be linked to any C project during build. The functions can then be used in the program.
+
+### Updates
+
+The `forward` branch contains changes to the library done after project validation and is susceptible to keep changing on the future.
+
+Thus, the `main` branch is the safest branch to use, but the `forward` branch is more advanced and provides more functions and options.
 
 ### Disclaimer
 
