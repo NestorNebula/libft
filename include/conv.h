@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdbool.h>
+# include "string.h"
 
 # define PREF_MAX_SIZE 4
 
@@ -94,9 +95,9 @@ void	set_conv_pref(t_conv *conv);
  *
  *  @param conv A pointer to the conv structure storing
  *  the conversion's informations
- *  @param fd The file descriptor
+ *  @param str The string in which the conversion must be stored
  *  @return The number of characters printed. -1 if an error occurred.
  */
-int		print_conv(t_conv *conv, int fd);
+int		print_conv(t_conv *conv, t_string *str);
 
 #endif /* end of include guard: CONV_H */
