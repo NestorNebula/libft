@@ -15,10 +15,12 @@
 #include <unistd.h>
 #include "conv.h"
 
-static int	handle_char(char c, t_string *str, bool *err);
+static void	handle_char(char c, t_string *str, bool *err);
 
-static int	handle_conversion(const char **format, t_string *str,
+static void	handle_conversion(const char **format, t_string *str,
 				va_list *ap, bool *err);
+
+static int	handle_output(t_string *str, bool err);
 
 /**
  *  Writes formatted output to stdout using format and others arguments.
@@ -45,53 +47,54 @@ int	ft_printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format != '%')
-			res += handle_char(*format++, str, &err);
+			handle_char(*format++, str, &err);
 		else
-			res += handle_conversion(&format, str, &ap, &err);
+			handle_conversion(&format, str, &ap, &err);
 	}
 	va_end(ap);
-	if (err || str->content == NULL)
-		return (-1);
-	return (write(STDOUT_FILENO, str->content, str->len));
+	return (handle_output(str, err));
 }
 
-static int	handle_char(char c, t_string *str, bool *err)
+static void	handle_char(char c, t_string *str, bool *err)
 {
-	string_cat(str, &c, 1);
-	if (str->content != NULL)
-	{
+	if (string_cat(str, &c, 1) == NULL)
 		*err = true;
-		return (-1);
-	}
-	return (1);
 }
 
-static int	handle_conversion(const char **format, t_string *str,
+static void	handle_conversion(const char **format, t_string *str,
 				va_list *ap, bool *err)
 {
-	int		res;
 	t_conv	conv;
 
-	res = -1;
 	(*format)++;
 	*format += read_conv(*format, &conv);
 	check_conv(&conv);
 	if (conv.err)
 	{
 		if (conv.type != '\0')
-			res = handle_char('%', str, err);
-		if (res != 1)
-			*err = true;
+			handle_char('%', str, err);
 	}
 	else if (set_conv_val(ap, &conv) == NULL)
 		*err = true;
 	else
 	{
 		set_conv_pref(&conv);
-		res = print_conv(&conv, str);
-		if (res == -1)
-			*err = true;
+		print_conv(&conv, str);
 		free(conv.val);
 	}
+}
+
+static int	handle_output(t_string *str, bool err)
+{
+	int	res;
+
+	if (err || str->content == NULL)
+	{
+		free_string(str);
+		return (-1);
+	}
+	res = write(STDOUT_FILENO, str->content, str->len);
+	free_string(str);
 	return (res);
+
 }
