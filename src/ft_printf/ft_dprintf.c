@@ -15,10 +15,13 @@
 #include <unistd.h>
 #include "conv.h"
 
-static int	handle_char(int fd, char c, bool *err);
+static void	handle_char(char c, t_string *str);
 
-static int	handle_conversion(int fd, const char **format, va_list *ap,
-				bool *err);
+static void	handle_conversion(const char **format, t_string *str,
+				va_list *ap);
+
+static int	handle_output(int fd, t_string *str);
+
 
 /**
  *  Writes formatted output to a file descriptor using format
@@ -31,67 +34,60 @@ static int	handle_conversion(int fd, const char **format, va_list *ap,
  */
 int	ft_dprintf(int fd, const char *format, ...)
 {
-	int		res;
-	bool	err;
-	va_list	ap;
+	int			res;
+	va_list		ap;
+	t_string	*str;
 
 	res = 0;
-	err = false;
 	if (format == NULL)
+		return (-1);
+	str = new_string();
+	if (str == NULL)
 		return (-1);
 	va_start(ap, format);
 	while (*format != '\0')
 	{
 		if (*format != '%')
-			res += handle_char(fd, *format++, &err);
+			handle_char(*format++, str);
 		else
-			res += handle_conversion(fd, &format, &ap, &err);
+			handle_conversion(&format, str, &ap);
 	}
 	va_end(ap);
-	if (err)
-		return (-1);
-	return (res);
+	return (handle_output(fd, str));
+
 }
 
-static int	handle_char(int fd, char c, bool *err)
+static void	handle_char(char c, t_string *str)
 {
-	int	res;
-
-	res = write(fd, &c, 1);
-	if (res != 1)
-	{
-		*err = true;
-		return (-1);
-	}
-	return (res);
+	string_cat(str, &c, 1);
 }
 
-static int	handle_conversion(int fd, const char **format, va_list *ap,
-				bool *err)
+static void	handle_conversion(const char **format, t_string *str,
+				va_list *ap)
 {
-	int		res;
 	t_conv	conv;
 
-	res = -1;
 	(*format)++;
 	*format += read_conv(*format, &conv);
 	check_conv(&conv);
 	if (conv.err)
 	{
 		if (conv.type != '\0')
-			res = handle_char(fd, '%', err);
-		if (res != 1)
-			*err = true;
+			handle_char('%', str);
 	}
-	else if (set_conv_val(ap, &conv) == NULL)
-		*err = true;
-	else
+	else if (set_conv_val(ap, &conv) != NULL)
 	{
 		set_conv_pref(&conv);
-		res = print_conv(&conv, fd);
-		if (res == -1)
-			*err = true;
+		print_conv(&conv, str);
 		free(conv.val);
 	}
+}
+
+static int	handle_output(int fd, t_string *str)
+{
+	int	res;
+
+	res = write(fd, str->content, str->len);
+	free_string(str);
 	return (res);
 }
