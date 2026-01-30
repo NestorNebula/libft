@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   string.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/30 09:35:28 by nhoussie          #+#    #+#             */
+/*   Updated: 2026/01/30 09:35:31 by nhoussie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 #include "string.h"
@@ -23,10 +35,9 @@ t_string	*new_string(void)
 	return (str);
 }
 
-char		*string_cat(t_string *str_ptr, const char *str)
+char		*string_cat(t_string *str_ptr, const char *str, size_t str_len)
 {
 	char	*resized_str;
-	size_t	str_len;
 	size_t	new_size;
 
 	if (str_ptr == NULL || str_ptr->content == NULL || str ==  NULL)
