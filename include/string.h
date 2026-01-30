@@ -36,10 +36,12 @@ t_string	*new_string(void);
  *
  * @param str_ptr A pointer to a string structure
  * @param str A string
+ * @param str_len The length of the string to add at the end of
+ * the string structure's content
  * @return A pointer to the resulting string on success.
  * A NULL pointer on error.
  */
-char		*string_cat(t_string *str_ptr, const char *str);
+char		*string_cat(t_string *str_ptr, const char *str, size_t str_len);
 
 /**
  * Frees a string structure
