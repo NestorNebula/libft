@@ -13,35 +13,36 @@
 #include <unistd.h>
 #include "libft.h"
 #include "conv.h"
+#include "string.h"
 #include "typeutils.h"
 
 static void	prepare_special_cases(t_conv *conv);
 
-static int	handle_complex_conv(t_conv *conv, int fd);
+static int	handle_complex_conv(t_conv *conv, t_string *str);
 
-static int	print_width(t_conv *conv, int fd);
+static int	print_width(t_conv *conv, t_string *str);
 
-static int	print_precision(t_conv *conv, int fd);
+static int	print_precision(t_conv *conv, t_string *str);
 
-int	print_conv(t_conv *conv, int fd)
+int		print_conv(t_conv *conv, t_string *str)
 {
 	int		res;
 
 	if (conv->err)
 	{
-		write(fd, "%", 1);
+		string_cat(str, "%", 1);
 		return (-1);
 	}
 	prepare_special_cases(conv);
 	if (!(conv->flags & DOT_F) && !conv->width)
 	{
-		res = write(fd, conv->pref, conv->pref_len);
-		res += write(fd, conv->val, conv->val_len);
+		string_cat(str, conv->pref, conv->pref_len);
+		string_cat(str, conv->val, conv->val_len);
 		if (res < 0 || (size_t) res != (conv->pref_len + conv->val_len))
 			return (-1);
 		return (res);
 	}
-	return (handle_complex_conv(conv, fd));
+	return (handle_complex_conv(conv, str));
 }
 
 static void	prepare_special_cases(t_conv *conv)
@@ -65,7 +66,7 @@ static void	prepare_special_cases(t_conv *conv)
 		conv->val_len = 0;
 }
 
-static int	handle_complex_conv(t_conv *conv, int fd)
+static int	handle_complex_conv(t_conv *conv, t_string *str)
 {
 	int	res;
 
@@ -75,14 +76,14 @@ static int	handle_complex_conv(t_conv *conv, int fd)
 	else
 		conv->prec_len = conv->val_len;
 	if (!(conv->flags & DASH_F) && !(conv->flags & ZERO_F))
-		res += print_width(conv, fd);
-	res += write(fd, conv->pref, conv->pref_len);
+		res += print_width(conv, str);
+	string_cat(str, conv->pref, conv->pref_len);
 	if (!(conv->flags & DASH_F) && (conv->flags & ZERO_F))
-		res += print_width(conv, fd);
-	res += print_precision(conv, fd);
-	res += write(fd, conv->val, conv->val_len);
+		res += print_width(conv, str);
+	res += print_precision(conv, str);
+	string_cat(str, conv->val, conv->val_len);
 	if (conv->flags & DASH_F)
-		res += print_width(conv, fd);
+		res += print_width(conv, str);
 	if (conv->width < conv->pref_len + conv->prec_len)
 		conv->width = conv->pref_len + conv->prec_len;
 	if (res != (int) conv->width)
@@ -90,7 +91,7 @@ static int	handle_complex_conv(t_conv *conv, int fd)
 	return (conv->width);
 }
 
-static int	print_width(t_conv *conv, int fd)
+static int	print_width(t_conv *conv, t_string *str)
 {
 	int		res;
 	size_t	i;
@@ -104,13 +105,13 @@ static int	print_width(t_conv *conv, int fd)
 	i = conv->pref_len + conv->prec_len;
 	while (i < conv->width)
 	{
-		res += write(fd, &c, 1);
+		string_cat(str, &c, 1);
 		i++;
 	}	
 	return (res);
 }
 
-static int	print_precision(t_conv *conv, int fd)
+static int	print_precision(t_conv *conv, t_string *str)
 {
 	int		res;
 	size_t	i;
@@ -119,7 +120,7 @@ static int	print_precision(t_conv *conv, int fd)
 	i = conv->val_len;
 	while (i < conv->prec_len)
 	{
-		res += write(fd, "0", 1);
+		string_cat(str, "0", 1);
 		i++;
 	}
 	return (res);

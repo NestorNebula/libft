@@ -15,9 +15,10 @@
 #include <unistd.h>
 #include "conv.h"
 
-static int	handle_char(char c, bool *err);
+static int	handle_char(char c, t_string *str, bool *err);
 
-static int	handle_conversion(const char **format, va_list *ap, bool *err);
+static int	handle_conversion(const char **format, t_string *str,
+				va_list *ap, bool *err);
 
 /**
  *  Writes formatted output to stdout using format and others arguments.
@@ -28,9 +29,10 @@ static int	handle_conversion(const char **format, va_list *ap, bool *err);
  */
 int	ft_printf(const char *format, ...)
 {
-	int		res;
-	bool	err;
-	va_list	ap;
+	int			res;
+	bool		err;
+	va_list		ap;
+	t_string	*str;
 
 	res = 0;
 	err = false;
@@ -40,30 +42,31 @@ int	ft_printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format != '%')
-			res += handle_char(*format++, &err);
+			res += handle_char(*format++, str, &err);
 		else
-			res += handle_conversion(&format, &ap, &err);
+			res += handle_conversion(&format, str, &ap, &err);
 	}
 	va_end(ap);
 	if (err)
 		return (-1);
-	return (res);
+	if (str->content == NULL)
+		return (-1);
+	return (write(STDOUT_FILENO, str->content, str->len));
 }
 
-static int	handle_char(char c, bool *err)
+static int	handle_char(char c, t_string *str, bool *err)
 {
-	int	res;
-
-	res = write(STDOUT_FILENO, &c, 1);
-	if (res != 1)
+	string_cat(str, &c, 1);
+	if (str->content != NULL)
 	{
 		*err = true;
 		return (-1);
 	}
-	return (res);
+	return (1);
 }
 
-static int	handle_conversion(const char **format, va_list *ap, bool *err)
+static int	handle_conversion(const char **format, t_string *str,
+				va_list *ap, bool *err)
 {
 	int		res;
 	t_conv	conv;
@@ -75,7 +78,7 @@ static int	handle_conversion(const char **format, va_list *ap, bool *err)
 	if (conv.err)
 	{
 		if (conv.type != '\0')
-			res = handle_char('%', err);
+			res = handle_char('%', str, err);
 		if (res != 1)
 			*err = true;
 	}
@@ -84,7 +87,7 @@ static int	handle_conversion(const char **format, va_list *ap, bool *err)
 	else
 	{
 		set_conv_pref(&conv);
-		res = print_conv(&conv, STDOUT_FILENO);
+		res = print_conv(&conv, str);
 		if (res == -1)
 			*err = true;
 		free(conv.val);
