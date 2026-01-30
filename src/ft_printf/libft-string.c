@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 #include "libft.h"
-#include "string.h"
+#include "libft-string.h"
 
 #define DEF_SIZE 4096
 
