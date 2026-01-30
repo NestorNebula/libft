@@ -38,6 +38,9 @@ int	ft_printf(const char *format, ...)
 	err = false;
 	if (format == NULL)
 		return (-1);
+	str = new_string();
+	if (str == NULL)
+		return (-1);
 	va_start(ap, format);
 	while (*format != '\0')
 	{
@@ -47,9 +50,7 @@ int	ft_printf(const char *format, ...)
 			res += handle_conversion(&format, str, &ap, &err);
 	}
 	va_end(ap);
-	if (err)
-		return (-1);
-	if (str->content == NULL)
+	if (err || str->content == NULL)
 		return (-1);
 	return (write(STDOUT_FILENO, str->content, str->len));
 }
