@@ -29,7 +29,7 @@ SRC = $(SRC_DIR)/ft_isalpha.c $(SRC_DIR)/ft_isdigit.c $(SRC_DIR)/ft_isalnum.c \
 	  $(SRC_DIR)/ft_putendl_fd.c $(SRC_DIR)/ft_putnbr_fd.c \
 	  $(SRC_DIR)/ft_printf/conv.c $(SRC_DIR)/ft_printf/ft_itoa_base.c \
 	  $(SRC_DIR)/ft_printf/ft_pitoa_base.c $(SRC_DIR)/ft_printf/ft_printf.c \
-	  $(SRC_DIR)/ft_printf/ft_dprintf.c $(SRC_DIR)/ft_printf/string.c \
+	  $(SRC_DIR)/ft_printf/ft_dprintf.c $(SRC_DIR)/ft_printf/libft-string.c \
 	  $(SRC_DIR)/ft_printf/ft_uitoa_base.c $(SRC_DIR)/ft_printf/print_conv.c \
 	  $(SRC_DIR)/ft_printf/typeutils.c $(SRC_DIR)/get_next_line/get_next_line.c \
 	  $(SRC_DIR)/get_next_line/get_next_line_utils.c
