@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string.h                                           :+:      :+:    :+:   */
+/*   libft-string.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 08:48:08 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/01/30 08:55:57 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/01/30 09:52:28 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRING_H
-# define STRING_H
+#ifndef LIBFT_STRING_H
+# define LIBFT_STRING_H
 
 # include <stddef.h>
 
@@ -50,4 +50,4 @@ char		*string_cat(t_string *str_ptr, const char *str, size_t str_len);
  */
 void		free_string(t_string *str_ptr);
 
-#endif // !STRING_H
+#endif // !LIBFT_STRING_H
