@@ -42,7 +42,6 @@ char		*string_cat(t_string *str_ptr, const char *str, size_t str_len)
 
 	if (str_ptr == NULL || str_ptr->content == NULL || str ==  NULL)
 		return (NULL);
-	str_len = ft_strlen(str);
 	if (str_ptr->len + str_len >= str_ptr->size)
 	{
 		new_size = str_ptr->len + str_len + 1;
