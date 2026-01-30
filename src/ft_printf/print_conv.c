@@ -20,14 +20,12 @@ static void	prepare_special_cases(t_conv *conv);
 
 static int	handle_complex_conv(t_conv *conv, t_string *str);
 
-static int	print_width(t_conv *conv, t_string *str);
+static void	print_width(t_conv *conv, t_string *str);
 
-static int	print_precision(t_conv *conv, t_string *str);
+static void	print_precision(t_conv *conv, t_string *str);
 
 int		print_conv(t_conv *conv, t_string *str)
 {
-	int		res;
-
 	if (conv->err)
 	{
 		string_cat(str, "%", 1);
@@ -38,9 +36,7 @@ int		print_conv(t_conv *conv, t_string *str)
 	{
 		string_cat(str, conv->pref, conv->pref_len);
 		string_cat(str, conv->val, conv->val_len);
-		if (res < 0 || (size_t) res != (conv->pref_len + conv->val_len))
-			return (-1);
-		return (res);
+		return (str->len);
 	}
 	return (handle_complex_conv(conv, str));
 }
@@ -68,36 +64,29 @@ static void	prepare_special_cases(t_conv *conv)
 
 static int	handle_complex_conv(t_conv *conv, t_string *str)
 {
-	int	res;
-
-	res = 0;
 	if ((conv->flags & DOT_F) && conv->val_len < conv->prec)
 		conv->prec_len = conv->prec;
 	else
 		conv->prec_len = conv->val_len;
 	if (!(conv->flags & DASH_F) && !(conv->flags & ZERO_F))
-		res += print_width(conv, str);
+		print_width(conv, str);
 	string_cat(str, conv->pref, conv->pref_len);
 	if (!(conv->flags & DASH_F) && (conv->flags & ZERO_F))
-		res += print_width(conv, str);
-	res += print_precision(conv, str);
+		print_width(conv, str);
+	print_precision(conv, str);
 	string_cat(str, conv->val, conv->val_len);
 	if (conv->flags & DASH_F)
-		res += print_width(conv, str);
+		print_width(conv, str);
 	if (conv->width < conv->pref_len + conv->prec_len)
 		conv->width = conv->pref_len + conv->prec_len;
-	if (res != (int) conv->width)
-		return (-1);
-	return (conv->width);
+	return (str->len);
 }
 
-static int	print_width(t_conv *conv, t_string *str)
+static void	print_width(t_conv *conv, t_string *str)
 {
-	int		res;
 	size_t	i;
 	char	c;
 
-	res = 0;
 	if ((conv->flags & ZERO_F) && !(conv->flags & DASH_F))
 		c = '0';
 	else
@@ -108,20 +97,16 @@ static int	print_width(t_conv *conv, t_string *str)
 		string_cat(str, &c, 1);
 		i++;
 	}	
-	return (res);
 }
 
-static int	print_precision(t_conv *conv, t_string *str)
+static void	print_precision(t_conv *conv, t_string *str)
 {
-	int		res;
 	size_t	i;
 
-	res = 0;
 	i = conv->val_len;
 	while (i < conv->prec_len)
 	{
 		string_cat(str, "0", 1);
 		i++;
 	}
-	return (res);
 }
