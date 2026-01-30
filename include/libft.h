@@ -74,4 +74,6 @@ char	*ft_pitoa_base(void *p, const char *base);
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
 
+void	ft_free_arr(void *arr, void (*free_item)(void *));
+
 #endif /* end of include guard: LIBFT_H */
