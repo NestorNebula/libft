@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 INCLUDE_DIR = include
 
-LIB_INCLUDE_DIR = $(ROOT)
+LIB_INCLUDE_DIR = $(ROOT)/include
 
 LIB_DIR = $(ROOT)
 
