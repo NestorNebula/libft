@@ -22,28 +22,229 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+/**
+ * Checks if an integer represents an alphabetical character.
+ *
+ * @param c An integer 
+ * @return 0 if the integer is non-alphabetical, > 0 otherwise
+ */
 int		ft_isalpha(int c);
+
+/**
+ * Checks if an integer represents a digit character.
+ *
+ * @param c An integer 
+ * @return 0 if the integer isn't a digit , > 0 otherwise
+ */
 int		ft_isdigit(int c);
+
+/**
+ * Checks if an integer represents an alphanumeric character.
+ *
+ * @param c An integer 
+ * @return 0 if the integer isn't alphanumeric , > 0 otherwise
+ */
 int		ft_isalnum(int c);
+
+/**
+ * Checks if an integer represents an ASCII character.
+ *
+ * @param c An integer 
+ * @return 0 if the integer isn't an ASCII character, > 0 otherwise
+ */
 int		ft_isascii(int c);
+
+/**
+ * Checks if an integer represents a printable character.
+ *
+ * @param c An integer 
+ * @return 0 if the integer isn't a printable character, > 0 otherwise
+ */
 int		ft_isprint(int c);
+
+/**
+ * Calculates the length of a string.
+ * 
+ * @param s A pointer to a string
+ * @return The number of bytes in the string pointed to by s,
+ * excluding the terminating null byte
+ */
 size_t	ft_strlen(const char *s);
+
+/**
+ * Fills memory with a constant byte.
+ *
+ * @param s A pointer to a chunk of memory
+ * @param c A byte
+ * @param n The number of bytes that must be filled
+ * @return A pointer to the given chunk of memory
+ */
 void	*ft_memset(void *s, int c, size_t n);
+
+/**
+ * Zeroes a byte string.
+ *@
+ * @param s A pointer to a chunk of memory
+ * @param n The number of bytes to fill with zeroes
+ */
 void	ft_bzero(void *s, size_t n);
+
+/**
+ * Copies memory area.
+ * The source and the destination mustn't overlap.
+ * Use ft_memmove if the memory areas do overlap.
+ *
+ * @param dest A pointer to a chunk of memory
+ * @param src A pointer to a chunk of memory
+ * @param n The number of bytes to copy
+ * @return A pointer to the destination string
+ */
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+
+/**
+ * Copies memory area.
+ *
+ * @param dest A pointer to a chunk of memory
+ * @param src A pointer to a chunk of memory
+ * @param n The number of bytes to copy
+ * @return A pointer to the destination string
+ */
 void	*ft_memmove(void *dest, const void *src, size_t n);
+
+/**
+ * Copies string.
+ *
+ * @param dst A pointer to a string
+ * @param src A pointer to a string
+ * @param siz The maximum number of bytes to copy,
+ * including the terminating null byte
+ * @return The length of the source string
+ */
 size_t	ft_strlcpy(char *dst, const char *src, size_t siz);
+
+/**
+ * Concatenates strings.
+ *
+ * @param dst A pointer to a string
+ * @param src A pointer to a string
+ * @param siz The size of the destination string
+ * @return The initial length of the destination string plus
+ * the length of the source string
+ */
 size_t	ft_strlcat(char *dst, const char *src, size_t siz);
+
+/**
+ * Converts an alphabetical character to uppercase.
+ *
+ * @param c An integer
+ * @return The converted character if the given integer was alphabetical,
+ * the given integer otherwise
+ */
 int		ft_toupper(int c);
+
+/**
+ * Converts an alphabetical character to lowercase.
+ *
+ * @param c An integer
+ * @return The converted character if the given integer was alphabetical,
+ * the given integer otherwise
+ */
 int		ft_tolower(int c);
+
+/**
+ * Locates a character in the given string, going forward.
+ *
+ * @param s A pointer to a string
+ * @param c An integer
+ * @return A pointer to the first matched character if found,
+ * a NULL pointer otherwise
+ */
 char	*ft_strchr(const char *s, int c);
+
+/**
+ * Locates a character in the given string, going backward.
+ *
+ * @param s A pointer to a string
+ * @param c An integer
+ * @return A pointer to the first matched character if found,
+ * a NULL pointer otherwise
+ */
 char	*ft_strrchr(const char *s, int c);
+
+/**
+ * Compares two strings.
+ *
+ * @param s1 A pointer to a string
+ * @param s2 A pointer to a string
+ * @param n The maximum number of bytes to compare
+ * @return 0 if the strings are equal,
+ * < 0 if the first string is less than the second one,
+ * > 0 if the first string is greater than the second one.
+ * These return values only correspond to the first n bytes of each string
+ */
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+
+/**
+ * Scans a chunk of memory for a character.
+ *
+ * @param s A pointer to a chunk of memory
+ * @param c An integer
+ * @param The maximum number of bytes to scan
+ * @return A pointer to the matching byte if found, a null pointer otherwise
+ */
 void	*ft_memchr(const void *s, int c, size_t n);
+
+/**
+ * Compares memory areas.
+ *
+ * @param s1 A pointer to a chunk of memory
+ * @param s2 A pointer to a chunk of memory
+ * @param n The number of bytes to compare
+ * @return 0 if the chunks of memory are equal,
+ * < 0 if the first chunk of memory is less than the second one,
+ * > 0 if the first chunk of memory is greater thatn the second one.
+ * These return values only correspond to the first n bytes of each chunk
+ */
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+
+/**
+ * Locates a substring in a string.
+ *
+ * @param big A pointer to a string
+ * @param little A pointer to a string
+ * @param len The number of characters to search in the string
+ * @return If the substring is an empty string, returns the string.
+ * A pointer to the first occurrence of the substring in string if found,
+ * a NULL pointer otherwise
+ */
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+
+/**
+ * Converts a string to an integer.
+ *
+ * @param nptr A pointer to a string
+ * @return The converted value, 0 on error
+ */
 int		ft_atoi(const char *nptr);
+
+/**
+ * Allocates dynamic memory and zeroes its content.
+ *
+ * @param nmemb The number of elements
+ * @param size The number of bytes needed for one element
+ * @return A pointer to the allocated memory on success,
+ * a NULL pointer otherwise
+ */
 void	*ft_calloc(size_t nmemb, size_t size);
+
+/**
+ * Duplicates a string.
+ *
+ * @param s A pointer to a string
+ * @return A pointer to the duplicated string on success,
+ * a NULL pointer otherwise.
+ */
 char	*ft_strdup(const char *s);
 
 /**
@@ -294,7 +495,21 @@ int		ft_printf(const char *format, ...);
  */
 int		ft_dprintf(int fd, const char *format, ...);
 
+/**
+ * Frees an array and its content.
+ *
+ * @param arr A pointer to the first element of an array
+ * @param free_item A function that will be called for each item in the array
+ */
 void	ft_free_arr(void *arr, void (*free_item)(void *));
+
+/**
+ * Closes a positive file descriptor.
+ *
+ * @param fd An integer
+ * @return 0 on success or if the given integer can't be a file descriptor,
+ * -1 otherwise.
+ */
 int		ft_close(int fd);
 
 /**
