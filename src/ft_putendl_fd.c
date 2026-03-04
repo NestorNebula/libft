@@ -12,13 +12,6 @@
 
 #include "libft.h"
 
-/**
- *  Outputs the string 's' to the specified file descriptor
- *  followed by a newline.
- *
- *  @param s The string to output
- *  @param fd The file descriptor
- */
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);

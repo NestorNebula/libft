@@ -16,14 +16,6 @@
 static size_t	handle_nbr(int nbr, const char *base,
 					size_t base_len, char *end_str);
 
-/**
- *  Allocates memory (using malloc(3)) and returns a string representing
- *  the integer received as an argument in the provided base.
- *
- *  @param n The integer to convert
- *  @param base The base used to convert the integer 
- *  @return The string representing the integer. NULL If the allocations fails
- */
 char	*ft_itoa_base(int n, const char *base)
 {
 	char	*str;

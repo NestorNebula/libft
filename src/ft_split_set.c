@@ -22,16 +22,6 @@ static char	*dup_until(const char *s, const char *set);
 
 static bool	is_delimiter(char c, const char *set);
 
-/**
- *  Allocates memory (using malloc(3)) and returns an array of strings
- *  obtained by splitting 's' using a set of characters as delimiters.
- *  The array must end with a NULL pointer.
- *
- *  @param s The string to be split
- *  @param set An array of characters considered as delimiters
- *  @return The array of new strings resulting from the split.
- *  NULL if the allocation fails
- */
 char	**ft_split_set(char const *s, const char *set)
 {
 	char	**split;

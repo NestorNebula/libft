@@ -13,14 +13,6 @@
 #include <stdlib.h>
 #include "libft.h"
 
-/**
- *  Allocates memory (using malloc(3)) and returns a copy of 's1'
- *  with characters from 'set' removed from the beginning and the end.
- *
- *  @param s1 The string to be trimmed
- *  @param set The string containing the set of characters to be removed
- *  @return The trimmed string. NULL if the allocation fails
- */
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char		*trimmed;

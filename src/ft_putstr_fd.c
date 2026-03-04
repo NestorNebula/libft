@@ -13,12 +13,6 @@
 #include <unistd.h>
 #include "libft.h"
 
-/**
- *  Outputs the string 's' to the specified file descriptor.
- *
- *  @param s The string to output
- *  @param fd The file descriptor on which to write
- */
 void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	len;

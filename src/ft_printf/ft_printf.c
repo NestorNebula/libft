@@ -22,13 +22,6 @@ static void	handle_conversion(const char **format, t_string *str,
 
 static int	handle_output(t_string *str);
 
-/**
- *  Writes formatted output to stdout using format and others arguments.
- *
- *  @param format The format of the output
- *  @param ... Optional arguments to use in combination with the format
- *  @return The number of characters printed. -1 if an error occurs
- */
 int	ft_printf(const char *format, ...)
 {
 	va_list		ap;

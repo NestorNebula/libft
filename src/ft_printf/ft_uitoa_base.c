@@ -16,15 +16,6 @@
 static size_t	handle_unbr(unsigned int u, const char *base,
 					size_t base_len, char *end_str);
 
-/**
- *  Allocates memory (using malloc(3)) and returns a string representing
- *  the unsigned integer received as an argument in the provided base.
- *
- *  @param n The unsigned integer to convert
- *  @param base The base used to convert the unsigned integer 
- *  @return The string representing the unsigned integer.
- *  NULL If the allocations fails
- */
 char	*ft_uitoa_base(unsigned int n, const char *base)
 {
 	char	*str;

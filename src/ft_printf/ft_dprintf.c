@@ -22,15 +22,6 @@ static void	handle_conversion(const char **format, t_string *str,
 
 static int	handle_output(int fd, t_string *str);
 
-/**
- *  Writes formatted output to a file descriptor using format
- *  and others arguments.
- *
- *  @param fd The file descriptor to which the output will be printed
- *  @param format The format of the output
- *  @param ... Optional arguments to use in combination with the format
- *  @return The number of characters printed. -1 if an error occurs
- */
 int	ft_dprintf(int fd, const char *format, ...)
 {
 	va_list		ap;

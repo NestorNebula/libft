@@ -17,15 +17,6 @@
 static size_t	handle_pnbr(uintptr_t p, const char *base,
 					size_t base_len, char *end_str);
 
-/**
- *  Allocates memory (using malloc(3)) and returns a string representing
- *  the value of the pointer's received as an argument in the provided base.
- *
- *  @param n The pointer to convert
- *  @param base The base used to convert the pointer 
- *  @return The string representing the pointer's value.
- *  NULL If the allocations fails
- */
 char	*ft_pitoa_base(void *p, const char *base)
 {
 	char	*str;

@@ -13,13 +13,6 @@
 #include <stdlib.h>
 #include "libft.h"
 
-/**
- *  Takes a node as a parameter and frees its content using the function 'del'.
- *  Free the node itself but does NOT free the next node.
- *
- *  @param lst The node to free
- *  @param del The address of the function use to delete the content
- */
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst != NULL)

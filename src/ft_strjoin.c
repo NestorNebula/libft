@@ -13,14 +13,6 @@
 #include <stdlib.h>
 #include "libft.h"
 
-/**
- *  Allocates memory (using malloc(3)) and returns a new string,
- *  which is the result of concatenating 's1' and 's2'.
- *
- *  @param s1 The prefix string
- *  @param s2 The suffix string
- *  @return The new string. NULL if the allocation fails
- */
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*join;
