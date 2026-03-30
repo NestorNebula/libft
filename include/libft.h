@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:28:40 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/02/15 14:59:11 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/03/30 14:31:29 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -523,5 +523,16 @@ int		ft_close(int fd);
  *  NULL if the allocation fails
  */
 char	**ft_split_set(char const *s, const char *set);
+
+/**
+ * Changes the size of a memory block.
+ *
+ * @param ptr The ptr to the memory block to resize
+ * @param initial_size The initial size of the memory block to resize
+ * @param size The new size of the memory block
+ * @return A pointer to the resized memory block on success,
+ * a NULL pointer otherwise
+ */
+void	*ft_realloc(void *ptr, size_t initial_size, size_t size);
 
 #endif /* end of include guard: LIBFT_H */
