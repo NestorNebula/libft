@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:28:40 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/03/30 14:31:29 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/03/31 15:50:02 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -534,5 +534,14 @@ char	**ft_split_set(char const *s, const char *set);
  * a NULL pointer otherwise
  */
 void	*ft_realloc(void *ptr, size_t initial_size, size_t size);
+
+/**
+ * Reads an integer stored in a string.
+ *
+ * @param s A string
+ * @param n A pointer to an integer to which the integer read will be stored
+ * @return 1 if an integer could be read, 0 otherwise
+ */
+int		ft_get_number(char *s, int *n);
 
 #endif /* end of include guard: LIBFT_H */
