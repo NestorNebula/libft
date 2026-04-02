@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:28:40 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/03/31 15:50:02 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/04/02 11:56:44 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -542,5 +542,18 @@ void	*ft_realloc(void *ptr, size_t initial_size, size_t size);
  * @return 1 if an integer could be read, 0 otherwise
  */
 int		ft_get_number(char *s, int *n);
+
+/**
+ * Converts a string to a long integer.
+ *
+ * @param nptr A pointer to a string
+ * @param endptr The address of a pointer to a character.
+ * It will be set to point to the first character that
+ * isn't part of the number,except if the argument is NULL.
+ * @param base An integer representing the size of the base used. Must be between 2 and 36
+ * @return The result of the conversion on success.
+ * LONG_MIN in case of underflow, LONG_MAX in case of overflow.
+ */
+long	ft_strtol(const char *nptr, char **endptr, int base);
 
 #endif /* end of include guard: LIBFT_H */
