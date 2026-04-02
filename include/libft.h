@@ -550,7 +550,8 @@ int		ft_get_number(char *s, int *n);
  * @param endptr The address of a pointer to a character.
  * It will be set to point to the first character that
  * isn't part of the number,except if the argument is NULL.
- * @param base An integer representing the size of the base used. Must be between 2 and 36
+ * @param base An integer representing the size of the base used.
+ * Must be between 2 and 36
  * @return The result of the conversion on success.
  * LONG_MIN in case of underflow, LONG_MAX in case of overflow.
  */

@@ -34,7 +34,7 @@ long	read_long(const char *nptr, char **endptr, int base,
 	long		l;
 	int			index;
 	int			is_negative;
-	
+
 	is_negative = *nptr == '-';
 	if (*nptr == '+' || *nptr == '-')
 		nptr++;
@@ -56,7 +56,7 @@ long	read_long(const char *nptr, char **endptr, int base,
 	return (l);
 }
 
-int		char_in_base(char c, int base, const char *base_arr)
+int	char_in_base(char c, int base, const char *base_arr)
 {
 	int	i;
 
