@@ -14,7 +14,7 @@
 #include <stdint.h>
 #include "libft.h"
 
-int		ft_get_number(char *s, int *n)
+int	ft_get_number(char *s, int *n)
 {
 	uint64_t	nbr;
 	int			is_negative;
