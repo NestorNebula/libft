@@ -21,7 +21,8 @@
 
 # define PREF_MAX_SIZE 4
 
-typedef struct conv {
+typedef struct conv
+{
 	size_t	width;
 	size_t	prec;
 	size_t	prec_len;

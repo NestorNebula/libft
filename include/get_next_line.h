@@ -21,7 +21,8 @@
 #  define BUFFER_SIZE 4096
 # endif /* ifndef BUFFER_SIZE */
 
-typedef struct content {
+typedef struct content
+{
 	int		fd;
 	char	buf[BUFFER_SIZE + 1];
 	size_t	buf_len;
@@ -30,7 +31,8 @@ typedef struct content {
 	size_t	line_size;
 }		t_content;
 
-typedef struct gnl_list {
+typedef struct gnl_list
+{
 	struct gnl_list	*prev;
 	struct gnl_list	*next;
 	t_content		cont;

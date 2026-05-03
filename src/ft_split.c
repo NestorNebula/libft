@@ -67,7 +67,7 @@ static int	handle_strs(const char *s, char c, char **split)
 				}
 			}
 			count++;
-		}	
+		}
 		while (*s != '\0' && *s != c)
 			s++;
 	}

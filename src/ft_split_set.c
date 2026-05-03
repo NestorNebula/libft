@@ -70,7 +70,7 @@ static int	handle_strs(const char *s, const char *set, char **split)
 				}
 			}
 			count++;
-		}	
+		}
 		while (*s != '\0' && !is_delimiter(*s, set))
 			s++;
 	}

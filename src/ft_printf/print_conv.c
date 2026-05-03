@@ -96,7 +96,7 @@ static void	print_width(t_conv *conv, t_string *str)
 	{
 		string_cat(str, &c, 1);
 		i++;
-	}	
+	}
 }
 
 static void	print_precision(t_conv *conv, t_string *str)

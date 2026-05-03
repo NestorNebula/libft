@@ -15,7 +15,8 @@
 
 # include <stddef.h>
 
-typedef struct s_string {
+typedef struct s_string
+{
 	char	*content;
 	size_t	size;
 	size_t	len;
